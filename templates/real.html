@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Real
+{% endblock %}
+
+{% block main %}
+    <form action="/real" method="post">
+        <div class="container-budget">
+            <h2>Date</h2>
+            <div class="mb-3 budget-form">
+                <input class="form-control mx-auto w-auto" name="date" type="date" value={{ today }}>
+            </div>
+        </div>
+        <div class="container-budget">
+            <h2>Revenues</h2>
+            <div id="cointainer-revenue">
+                <div id="new-container-revenue">
+                    <select name="revenue-category">
+                        {% for revenue_category in revenues_categories %}
+                            <option>{{ revenue_category["category_revenue"] }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="revenue-description">
+                        {% for revenue in revenues %}
+                            <option>{{ revenue["description"] }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="mb-3 budget-form">
+                        <input class="form-control mx-auto w-auto" name="real-revenue" placeholder="Real" type="number" min=1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-budget">
+            <h2>Outgoins</h2>
+            <div id="cointainer-outgoing">
+                <div id="new-container-outgoing">
+                    <select name="outgoing-category">
+                        {% for outgoing_category in outgoings_categories %}
+                            <option>{{ outgoing_category["category_outgoing"] }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="outgoing-description">
+                        {% for outoging in outgoings %}
+                            <option>{{ outoging["description"] }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="mb-3 budget-form">
+                        <input class="form-control mx-auto w-auto" name="real-outgoing" placeholder="Real" type="number" min=1>
+                    </div>
+                </div>
+            </div>
+            <div class="container-budget">
+                <h2>Savings</h2>
+                <div id="cointainer-saving">
+                    <div class="mb-3 budget-form">
+                        <input class="form-control mx-auto w-auto" name="real-saving" placeholder="Real" type="number">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><button class="btn btn-primary" type="submit">Submit Real</button>
+    </form>
+    <br><button class="btn btn-add" id="budget-revenue">Add Revenue</button>
+    <button class="btn btn-add" id="budget-outgoing">Add Outgoing</button>
+{% endblock %}

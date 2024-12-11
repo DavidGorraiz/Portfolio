@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+    <h1>Welcome {{ username}}!</h1>
+    <p>this is a site that helps you to organize your budget.</p><br>
+
+    <p>To get started, you can plan your budget for a set period with income, expenses and savings on the following page
+        <a href="/budget">Budget</a> <br> if you try to add a budget with the same period, category and description values it is not added but the budget value is updated.</p>
+
+    <p>You can then upload the actual values of the budgeted items on the page <a href="/real">Real</a>
+    <br>The date you put in the actual values must be within a period already established in Budget.</p>
+
+    <p>You can delete items from this page,
+        as a note it is important to keep in mind that if you delete in results by period you will delete everything within the period shown.</p>
+
+    <h2>Revenues</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Category Revenue</th>
+                <th>Description Revenue</th>
+                <th>Budget Revenue</th>
+                <th>Date Start</th>
+                <th>Date End</th>
+                <th>Real Revenue</th>
+                <th>Date Real Revenue</
+            </tr>
+        </thead>
+        <tbody>
+            {% for revenue in revenues %}
+                <tr>
+                    <td>{{ revenue["category_revenue"] }}</td>
+                    <td>{{ revenue["description"] }}</td>
+                    <td>{{ revenue["budget"] }}</td>
+                    <td>{{ revenue["date_start"] }}</td>
+                    <td>{{ revenue["date_end"] }}</td>
+                    <td>{{ revenue["real"] }}</td>
+                    <td>{{ revenue["date_revenue"] }}</td>
+                    <td>
+                        <form action="/dashboard" method="post">
+                            <input class="form-control mx-auto w-auto" name="id-revenue" value={{ revenue["id_revenue"] }} hidden=true>
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+
+    <h2>Outgoings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Category Outgoing</th>
+                <th>Description Outgoing</th>
+                <th>Budget Outgoing</th>
+                <th>Date Start</th>
+                <th>Date End</th>
+                <th>Real Outgoing</th>
+                <th>Date Real Outgoing</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for outgoing in outgoings %}
+                <tr>
+                    <td>{{ outgoing["category_outgoing"] }}</td>
+                    <td>{{ outgoing["description"] }}</td>
+                    <td>{{ outgoing["budget"] }}</td>
+                    <td>{{ outgoing["date_start"] }}</td>
+                    <td>{{ outgoing["date_end"] }}</td>
+                    <td>{{ outgoing["real"] }}</td>
+                    <td>{{ outgoing["date_outgoing"] }}</td>
+                    <td>
+                        <form action="/dashboard" method="post">
+                            <input class="form-control mx-auto w-auto" name="id-outgoing" value={{ outgoing["id_outgoing"] }} hidden=true>
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+
+    <h2>Savings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Budget Saving</th>
+                <th>Date Start</th>
+                <th>Date End</th>
+                <th>Real Saving</th>
+                <th>Date Real Svaing</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for saving in savings %}
+                <tr>
+                    <td>{{ saving["budget"] }}</td>
+                    <td>{{ saving["date_start"] }}</td>
+                    <td>{{ saving["date_end"] }}</td>
+                    <td>{{ saving["real"] }}</td>
+                    <td>{{ saving["date_saving"] }}</td>
+                    <td>
+                        <form action="/dashboard" method="post">
+                            <input class="form-control mx-auto w-auto" name="id-saving" value={{ saving["id_saving"] }} hidden=true>
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+
+    <h2>Results by period</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Period</th>
+                <th>Revenue Budget</th>
+                <th>Outgoing Budget</th>
+                <th>Total Budget</th>
+                <th>Saving Budget</th>
+                <th>Revenue Real</th>
+                <th>Outgoing Real</th>
+                <th>Total Real</th>
+                <th>Saving Real</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for total in totals %}
+                <tr>
+                    <td>{{ total["date_start"] }} / {{ total["date_end"] }}</td>
+                    <td>{{ total["revenues_budget"] }}</td>
+                    <td>{{ total["outgoings_budget"] }}</td>
+                    <td>{{ total["total_budget"] }}</td>
+                    <td>{{ total["savings_budget"] }}</td>
+                    <td>{{ total["revenues_real"] }}</td>
+                    <td>{{ total["outgoings_real"] }}</td>
+                    <td>{{ total["total_real"] }}</td>
+                    <td>{{ total["savings_real"] }}</td>
+                    <td>
+                        <form action="/dashboard" method="post">
+                            <input class="form-control mx-auto w-auto" name="date-start" value={{ total["date_start"] }} hidden=true>
+                            <input class="form-control mx-auto w-auto" name="date-end" value={{ total["date_end"] }} hidden=true>
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

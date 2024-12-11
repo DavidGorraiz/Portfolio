@@ -1,0 +1,77 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+main {
+    padding-bottom: 2%;
+}
+
+.hero {
+    background: rgb(102,103,246);
+    background: linear-gradient(180deg, rgba(102,103,246,0.6251750700280112) 0%, rgba(120,155,255,0.364670868347339) 50%, rgba(126,120,250,0.06775210084033612) 100%);
+}
+
+footer {
+    padding-top: 2%;
+    background-color: #FAFAFA;
+    text-align: center;
+}
+
+.footer-links ul{
+    list-style-type: None;
+}
+.footer-links ul li a {
+    text-decoration: none;
+    color: black;
+}
+.footer-links ul li a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .container-budget{
+    display: inline;
+  }
+
+  .budget-form{
+    display: inline-block;
+  }
+
+  .btn-add
+  {
+    background-color: #2962ff;
+    color: white;
+    display: inline;
+  }
+
+  .btn-add:hover
+  {
+    background-color: #265AE9;
+    color: white;
+  }
+
+  select{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

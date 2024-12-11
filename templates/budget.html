@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Budget
+{% endblock %}
+
+{% block main %}
+    <form action="/budget" method="post">
+        <div class="container-budget">
+            <h2>Period</h2>
+            <div class="mb-3 budget-form">
+                <label for="date-start">Start date:</label>
+                <input class="form-control mx-auto w-auto" name="date-start" type="date">
+            </div>
+            <div class="mb-3 budget-form">
+                <label for="date-end">End date:</label>
+                <input class="form-control mx-auto w-auto" name="date-end" placeholder="start date" type="date">
+            </div>
+        </div>
+        <div class="container-budget">
+            <h2>Revenues</h2>
+            <div id="cointainer-revenue">
+                <div id="new-container-revenue">
+                    <div class="mb-3 budget-form">
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="category-revenue" placeholder="Category" type="text">
+                    </div>
+                    <div class="mb-3 budget-form">
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="description-revenue" placeholder="Description" type="text">
+                    </div>
+                    <div class="mb-3 budget-form">
+                        <input class="form-control mx-auto w-auto" name="budget-revenue" placeholder="Budget" type="number" min=1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-budget">
+            <h2>Outgoins</h2>
+            <div id="cointainer-outgoing">
+                <div id="new-container-outgoing">
+                    <div class="mb-3 budget-form">
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="category-outgoing" placeholder="Category" type="text">
+                    </div>
+                    <div class="mb-3 budget-form">
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="description-outgoing" placeholder="Description" type="text">
+                    </div>
+                    <div class="mb-3 budget-form">
+                        <input class="form-control mx-auto w-auto" name="budget-outgoing" placeholder="Budget" type="number" min=1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-budget">
+            <h2>Savings</h2>
+            <div id="cointainer-saving">
+                <div class="mb-3 budget-form">
+                    <input class="form-control mx-auto w-auto" name="budget-saving" placeholder="Budget" type="number">
+                </div>
+            </div>
+        </div>
+        <br><button class="btn btn-primary" type="submit">Submit Budget</button>
+    </form>
+    <br><button class="btn btn-add" id="budget-revenue">Add Revenue</button>
+    <button class="btn btn-add" id="budget-outgoing">Add Outgoing</button>
+{% endblock %}
