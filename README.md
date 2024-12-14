@@ -1,5 +1,16 @@
 # PERSONAL BUDGET
 #### Video Demo:  https://youtu.be/6z51qFcS6UY
+#### Execution:
+##### 1. Create virtual environment
+python -m venv venv
+##### 2. Activate virtual environment
+venv\Scripts\activate
+##### 3. Install Libraries
+pip install -r requirements.txt
+##### 4. Verify libraries
+pip list
+##### 5. Running flask
+flask run
 #### Description:
 ##### Introduction
 The objective of this project is to have as a product a web page that allows us to make financial budgets to plan
