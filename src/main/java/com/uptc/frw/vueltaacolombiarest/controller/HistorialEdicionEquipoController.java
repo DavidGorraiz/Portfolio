@@ -29,4 +29,9 @@ public class HistorialEdicionEquipoController {
     public HistorialEdicionEquipos save(@RequestBody HistorialEdicionEquipos historialEdicionEquipo){
         return historialEdicionEquipoService.save(historialEdicionEquipo);
     }
+
+    @DeleteMapping("/{idEquipo}/{idEdicion}/{idPatrocinador}")
+    public HistorialEdicionEquipos delete(@PathVariable long idEquipo, @PathVariable long idEdicion, @PathVariable long idPatrocinador){
+        return historialEdicionEquipoService.delete(idEquipo, idEdicion, idPatrocinador);
+    }
 }

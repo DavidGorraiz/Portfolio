@@ -50,4 +50,14 @@ public class HistorialEdicionEquipoService {
         historialEdicionEquipos.setPatrocinador(patrocinador);
         return historialEdicionEquipoRepo.save(historialEdicionEquipos);
     }
+
+    public HistorialEdicionEquipos delete(long idEquipo, long idEdicion, long idPatrocinador){
+        HistorialEdicionEquipos historialEdicionEquipos = findById(idEquipo,idEdicion,idPatrocinador);
+        System.out.println(historialEdicionEquipos);
+        if(historialEdicionEquipos != null){
+            historialEdicionEquipoRepo.delete(historialEdicionEquipos);
+            return historialEdicionEquipos;
+        }
+        throw new RuntimeException();
+    }
 }

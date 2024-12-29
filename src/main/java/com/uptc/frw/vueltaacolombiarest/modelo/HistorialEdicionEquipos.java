@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uptc.frw.vueltaacolombiarest.modelo.Key.HistorialEdicionEquiposKey;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "HISTORIAL_EDICION_EQUIPO")
 @IdClass(HistorialEdicionEquiposKey.class)
@@ -80,5 +82,27 @@ public class HistorialEdicionEquipos {
 
     public void setPatrocinador(Patrocinador patrocinador) {
         this.patrocinador = patrocinador;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HistorialEdicionEquipos that = (HistorialEdicionEquipos) o;
+        return idEquipo == that.idEquipo && idEdicion == that.idEdicion && idPatrocinador == that.idPatrocinador;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idEquipo, idEdicion, idPatrocinador);
+    }
+
+    @Override
+    public String toString() {
+        return "HistorialEdicionEquipos{" +
+                "idEquipo=" + idEquipo +
+                ", idEdicion=" + idEdicion +
+                ", idPatrocinador=" + idPatrocinador +
+                '}';
     }
 }
