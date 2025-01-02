@@ -1,7 +1,7 @@
 package com.uptc.frw.vueltaacolombiarest.controller;
 
-import com.uptc.frw.vueltaacolombiarest.modelo.Etapa;
-import com.uptc.frw.vueltaacolombiarest.servicios.EtapaService;
+import com.uptc.frw.vueltaacolombiarest.model.Etapa;
+import com.uptc.frw.vueltaacolombiarest.services.EtapaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,7 +1,7 @@
 package com.uptc.frw.vueltaacolombiarest.controller;
 
-import com.uptc.frw.vueltaacolombiarest.modelo.Corredor;
-import com.uptc.frw.vueltaacolombiarest.servicios.CorredorService;
+import com.uptc.frw.vueltaacolombiarest.model.Corredor;
+import com.uptc.frw.vueltaacolombiarest.services.CorredorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

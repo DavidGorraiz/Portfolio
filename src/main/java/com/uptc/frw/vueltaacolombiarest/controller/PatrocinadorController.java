@@ -1,7 +1,7 @@
 package com.uptc.frw.vueltaacolombiarest.controller;
 
-import com.uptc.frw.vueltaacolombiarest.modelo.Patrocinador;
-import com.uptc.frw.vueltaacolombiarest.servicios.PatrocinadorService;
+import com.uptc.frw.vueltaacolombiarest.model.Patrocinador;
+import com.uptc.frw.vueltaacolombiarest.services.PatrocinadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

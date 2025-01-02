@@ -1,8 +1,7 @@
 package com.uptc.frw.vueltaacolombiarest.controller;
 
-import com.uptc.frw.vueltaacolombiarest.modelo.HistorialEdicionEquipos;
-import com.uptc.frw.vueltaacolombiarest.modelo.Key.HistorialEdicionEquiposKey;
-import com.uptc.frw.vueltaacolombiarest.servicios.HistorialEdicionEquipoService;
+import com.uptc.frw.vueltaacolombiarest.model.HistorialEdicionEquipos;
+import com.uptc.frw.vueltaacolombiarest.services.HistorialEdicionEquipoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

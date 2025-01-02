@@ -1,0 +1,102 @@
+Para añadir un sistema que almacene los logs de tu API en Elasticsearch como un servicio independiente, puedes seguir estos pasos:
+
+1. Configuración inicial de Elasticsearch
+Configura Elasticsearch:
+
+Asegúrate de tener una instancia de Elasticsearch en ejecución. Puedes usar una instalación local o un contenedor Docker.
+Añade la dependencia de Elasticsearch en build.gradle:
+
+gradle
+Copiar código
+implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+Configura application.properties para conectarte a Elasticsearch:
+
+properties
+Copiar código
+spring.elasticsearch.uris=http://localhost:9200
+spring.elasticsearch.username=your-username
+spring.elasticsearch.password=your-password
+2. Crear un servicio independiente para logs
+Crea un modelo para los logs:
+
+java
+Copiar código
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+@Document(indexName = "api-logs")
+public class LogEntry {
+    @Id
+    private String id;
+    private String level;
+    private String message;
+    private String timestamp;
+    private String endpoint;
+    private String method;
+
+    // Getters and setters
+}
+Crea un repositorio para los logs:
+
+java
+Copiar código
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
+public interface LogRepository extends ElasticsearchRepository<LogEntry, String> {
+}
+Crea un servicio para gestionar los logs:
+
+java
+Copiar código
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class LogService {
+    @Autowired
+    private LogRepository logRepository;
+
+    public void saveLog(LogEntry logEntry) {
+        logRepository.save(logEntry);
+    }
+}
+3. Implementar el registro de logs en los controladores
+Usa un aspecto para interceptar las llamadas a los controladores:
+
+java
+Copiar código
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+    @Autowired
+    private LogService logService;
+
+    @Pointcut("within(com.tu.paquete.controller..*)")
+    public void controllerMethods() {}
+
+    @AfterReturning("controllerMethods()")
+    public void logControllerMethod() {
+        // Registra la información deseada, como endpoint y respuesta.
+        LogEntry log = new LogEntry();
+        log.setLevel("INFO");
+        log.setMessage("Controller method executed");
+        log.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        // Más datos del endpoint
+        logService.saveLog(log);
+    }
+}
+Configura el AOP en tu aplicación: Añade la anotación @EnableAspectJAutoProxy en tu clase principal de Spring Boot.
+
+4. Probar el sistema
+Realiza algunas llamadas a los endpoints y verifica que los logs se almacenan correctamente en Elasticsearch.
+
+Beneficios de este diseño
+Separación de responsabilidades: El manejo de logs está completamente desacoplado de la lógica de tu API.
+Escalabilidad: Puedes desplegar el servicio de logs como un microservicio independiente si lo necesitas en el futuro.
+Compatibilidad con ELK Stack: Elasticsearch puede integrarse fácilmente con Kibana y Logstash para análisis de logs en tiempo real.

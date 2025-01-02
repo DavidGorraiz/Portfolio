@@ -1,7 +1,7 @@
 package com.uptc.frw.vueltaacolombiarest.controller;
 
-import com.uptc.frw.vueltaacolombiarest.modelo.Podio;
-import com.uptc.frw.vueltaacolombiarest.servicios.PodioService;
+import com.uptc.frw.vueltaacolombiarest.model.Podio;
+import com.uptc.frw.vueltaacolombiarest.services.PodioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

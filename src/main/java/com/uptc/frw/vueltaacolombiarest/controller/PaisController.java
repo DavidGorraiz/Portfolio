@@ -1,7 +1,7 @@
 package com.uptc.frw.vueltaacolombiarest.controller;
 
-import com.uptc.frw.vueltaacolombiarest.modelo.Pais;
-import com.uptc.frw.vueltaacolombiarest.servicios.PaisServicio;
+import com.uptc.frw.vueltaacolombiarest.model.Pais;
+import com.uptc.frw.vueltaacolombiarest.services.PaisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,30 +12,30 @@ import java.util.List;
 public class PaisController {
 
     @Autowired
-    private PaisServicio paisServicio;
+    private PaisService paisService;
 
     @GetMapping
     public List<Pais> findAll() {
-        return paisServicio.getAll();
+        return paisService.getAll();
     }
 
     @GetMapping("/{id}")
     public Pais findById(@PathVariable long id) {
-        return paisServicio.getById(id);
+        return paisService.getById(id);
     }
 
     @PostMapping
     public Pais save(@RequestBody Pais pais) {
-        return paisServicio.save(pais);
+        return paisService.save(pais);
     }
 
     @PutMapping
     public Pais update(@RequestParam long id,@RequestBody Pais pais) {
-        return paisServicio.update(id, pais);
+        return paisService.update(id, pais);
     }
 
     @DeleteMapping("/{id}")
     public Pais delete(@PathVariable long id) {
-        return paisServicio.delete(id);
+        return paisService.delete(id);
     }
 }
