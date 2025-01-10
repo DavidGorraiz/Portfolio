@@ -95,14 +95,6 @@ CREATE TABLE mi_tabla (
 
 -- Load the data into the tables wiht SQLDeveloper or SQLLOADER
 
--- Inserts from temp to the tables
-INSERT INTO REGIONS(NAME) SELECT DISTINCT REGION FROM TEMP;
-
-INSERT INTO COUNTRIES(CODE, NAME) select distinct country_code, country from temp;
-
-insert into cases(date_reported, new_cases, cumulative_cases, new_deaths, cumulative_deaths, id_country) 
-select date_reported, new_cases, cumulative_cases, new_deaths, cumulative_deaths, country_code from temp;
-
 -- Add constraints
 -- Primary keys
 ALTER TABLE REGIONS ADD CONSTRAINT regions_pk PRIMARY KEY (id);
