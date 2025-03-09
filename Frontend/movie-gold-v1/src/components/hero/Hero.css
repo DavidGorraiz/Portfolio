@@ -1,0 +1,124 @@
+.movie-carousel-container {
+    width: 100vw;
+    background-color: black;
+}
+
+.movie-card-container {
+    height: 550px;
+    background-color: black;
+    position: relative; /* Esto asegura que .movie-detail se posicione relativo a este contenedor */
+}
+
+.movie-card {
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), var(--img);
+}
+
+.movie-detail {
+    position: absolute;
+    top: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.movie-title {
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.movie-poster {
+    height: 300px;
+    border: 1px solid gold;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.movie-poster > img {
+    height: 100%;
+    width: 100%;
+}
+
+.movie-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+}
+
+.play-button-icon-container {
+    padding: 0px;
+    margin: 0px;
+    width: 150px;
+}
+
+.play-button-icon {
+    padding: 0px;
+    margin: 0px;
+    color: gold;
+    font-size: 3rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.play-button-icon:hover {
+    font-size: 4rem;
+    color: white;
+}
+
+@media only screen and (max-width: 800px) {
+    .movie-detail {
+        flex-direction: column;
+        align-items: center;
+        top: 20px;
+    }
+}
+
+/* Estilos para las flechas de navegación */
+.slick-prev, .slick-next {
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+  }
+  
+  .slick-prev:before, 
+  .slick-next:before {
+    font-size: 20px;
+    color: white;
+  }
+  
+  /* Posición de las flechas */
+  .slick-prev {
+    left: 10px;
+  }
+  
+  .slick-next {
+    right: 10px;
+  }
+  
+  /* Estilos para los puntos (dots) */
+  .slick-dots li button:before {
+    font-size: 12px;
+    color: white;
+    opacity: 1;
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: gold;
+  }
+  
+  /* Opcional: Asegura que los dots estén visibles en un fondo oscuro */
+  .slick-dots {
+    bottom: 15px;
+  }
+  
