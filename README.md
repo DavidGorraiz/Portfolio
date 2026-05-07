@@ -6,6 +6,8 @@ This is a REST API created with SpringBoot that implements an oracle version 19c
 ## Components
 This project uses as a base:
 
+- Java 17
+- JPA
 - SpringBoot
 - JDBC (11)
 - Oracle 19c database
